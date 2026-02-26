@@ -1,2 +1,153 @@
+@if (isLoading) {
+<div class="preloader">
+  <div class="preloader__loading-block">
+    <div class="loader">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <p class="preloader__title">Загрузка...</p>
+  </div>
+</div>
+} @else {
+<div class="page">
+  <header class="header">
+    <div class="container">
+      <div class="header__wrapper">
+        <a class="header__logo-link" href="#">
+          <img src="/images/logo-icon.svg" alt="Логотип РУМТИБЕТ">
+          <span class="header__logo-caption">{{ companyName }}</span>
+        </a>
+        <nav class="header__nav">
+          <ul class="header__list">
+            <li class="header__item">
+              <a class="header__nav-link" href="#">Главная</a>
+            </li>
+            <li class="header__item">
+              <a class="header__nav-link" href="#">Про гида</a>
+            </li>
+            <li class="header__item">
+              <a class="header__nav-link" href="#">Программа тура</a>
+            </li>
+            <li class="header__item">
+              <a class="header__nav-link" href="#">Стоимость</a>
+            </li>
+            <li class="header__item">
+              <a class="header__nav-link" href="#">Блог</a>
+            </li>
+            <li class="header__item">
+              <a class="header__nav-link" href="#">Контакты</a>
+            </li>
+          </ul>
+          <button class="header__btn btn">Консультация</button>
+        </nav>
+      </div>
+      <div class="functional">
+        <div>
+          @if (currentWidget === 'timeAndDate') {
+            <div class="time-date-wrapper">
+              <p class="current-time">{{ currentTimeAndDate }}</p>
+              <button class="btn" (click)="switchWidget('counter')" id="date-toggle-button">Показать счётчик</button>
+            </div>
+          } @else {
+            <div class="count">
+              <div class="count__wrapper">
+                <button (click)="increaseCounter()" class="btn" id="increase-button">+</button>
+                <p class="number">{{ counter }}</p>
+                <button (click)="reduceCounter()" class="btn" [disabled]="counter === 0" id="reduce-button">-</button>
+              </div>
+              <button class="btn" (click)="switchWidget('timeAndDate')" id="count-toggle-button">Показать дату и время</button>
+            </div>
+            }
+          </div>
+        </div>
+    </div>
+  </header>
+  <section class="section">
+    <div class="container">
+      <h1 class="section__heading">Насладись прогулкой в горах с командой единомышленников</h1>
+      <form class="section__form" action="#" method="GET">
+        <fieldset class="section__fieldset">
+          <div class="section__select-wrapper">
+            <select [(ngModel)]="selectedLocation" class="custom-input" placeholder="Локация для тура" required>
+              <option  id="location" name="location" class="custom-input__field" type="text" placeholder="Локация для тура"></option>
+              @for (location of locations; track location.id) {
+                <option class="custom-input__field" [value]="location.value">{{ location.location }}</option>
+              }
+            </select>
+            <label class="custom-input__label" for="location">выберите из списка</label>
+            <img class="custom-input__icon" src="/images/select-icon.svg" alt="#">
+          </div>
+          <div class="section__select-wrapper">
+            <input [(ngModel)]="selectedDate"  id="date" name="date" class="custom-input__field" type="date" placeholder="Дата похода" required>
+            <label class="custom-input__label" for="date">укажите диапазон</label>
+            <img class="custom-input__icon" src="/images/calendar-icon.svg" alt="#">
+          </div>
+          <div class="section__select-wrapper">
+            <select [(ngModel)]="selectedParticipants" class="custom-input">
+              <option  id="participants" name="participants" class="custom-input__field" type="text" placeholder="Участники" required></option>
+              @for (quantity of participants; track quantity.id) {
+                <option class="custom-input__field" [value]="quantity.value">{{quantity.quantity}} участников</option>
+              }
+            </select>
+            <label class="custom-input__label" for="participants">минимум 4 человека</label>
+            <img class="custom-input__icon" src="/images/select-icon.svg" alt="#">
+          </div>
+          <button class="section__button btn" type="button" [disabled]="!selectedLocation || !selectedDate || !selectedParticipants">Найти программу</button>
+        </fieldset>
+      </form>
+      <div class="custom-input">
+        <input [(ngModel)]="liveText" class="custom-input__field" type="text" placeholder="Живой инпут"
+        id="input-live-text">
+        <div>{{ liveText }}</div>
+      </div>
+    </div>
+  </section>
+  <section class="approach">
+    <div class="container">
+      <div class="approach__wrapper">
+        <div class="approach__intro-block">
+          <img class="approach__picture approach__snowy-mountains" src="/images/snowy-mountains.png" width="350" height="400" alt="#">
+          <img class="approach__picture approach__forest-house" src="/images/forest-house.png" width="350" height="400" alt="#">
+        </div>
+        <div class="approach__descr-block">
+          <span class="approach__text">о нашем походе</span>
+          <h2 class="approach__heading">Исследуйте все горные массивы мира вместе с нами</h2>
+          <p class="approach__description">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.</p>
+          <button class="approach__button btn" id="approach__button">Программа тура</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="offers">
+    <div class="container">
+      <div class="offers__wrapper">
+        <div class="offers__programms">
+          <span class="offers__text">наше предложение</span>
+          <h2 class="offers__heading">Лучшие программы для тебя</h2>
+          <p class="offers__description">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.</p>
+          <ul class="offers__privilege-list">
+            @for (offer of offers; track offer.id) {
+              <li class="offers__privilege-item">
+                <img [src]="'/images/' + offer.image + '.png'" class="offers__privilege-icon" width="50" height="50" alt="#">
+                <div class="offers__privilege-text-block">
+                  <span class="offers__item-title">{{ offer.title }}</span>
+                  <p class="offers__item-descr">{{ offer.description }}</p>
+                </div>
+              </li>
+            }
+          </ul>
+        </div>
+        <div class="offers__pictures-wrapper">
+          <img src="/images/cup-on-vacation.png" width="250" height="250" alt="#">
+          <img src="/images/man-on-canion.png" width="250" height="250" alt="#">
+          <img src="/images/man-on-snowmobile.png" width="250" height="250" alt="#">
+          <img src="/images/summer-nature.png" width="250" height="250" alt="#">
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+}
 
 
