@@ -1,5 +1,5 @@
-export interface IParticipant {
+export interface IParticipants {
   id: number;
-  quantity: number;
-  value: string;
+  number: number;
+  title: string
 }
