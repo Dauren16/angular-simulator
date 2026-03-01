@@ -27,8 +27,8 @@ export class AppComponent {
   isLoading: boolean = true;
 
   constructor() {
-    this.showCurrentTimeAndDate();
-    this.finishLoading();
+    this.startClock();
+    this.simulateLoading();
   }
 
   offers: IOffers[] = [
@@ -50,7 +50,7 @@ export class AppComponent {
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
       image: 'sale-ticket-icon'
     }
-  ]
+  ];
 
   locations: ILocations[] = [
     {
@@ -65,7 +65,7 @@ export class AppComponent {
       id: 3,
       name: 'Uralsk'
     }
-  ]
+  ];
 
   participants: IParticipants[] = [
     {
@@ -83,7 +83,7 @@ export class AppComponent {
       number: 6,
       title: '6 Участников'
     }
-  ]
+  ];
 
   counterIncrease(): void {
     this.counter++;
@@ -93,26 +93,22 @@ export class AppComponent {
     this.counter--;
   }
 
-  showCurrentTimeAndDate(): void {
+  startClock(): void {
     setInterval(() => {
-      this.currentTimeAndDate = new Date().toString()
-    }, 1000)
+      this.currentTimeAndDate = new Date().toString();
+    }, 1000);
   }
 
   toggleDate(): void {
-    this.showDate = true;
+    this.showDate = !this.showDate;
   }
 
-  toggleWidget() {
-    if(this.currentWidget === 'counter') {
-      this.currentWidget = 'showDate';
-    } else {
-      this.currentWidget = 'counter';
-    }
+  toggleWidget(): void {
+    this.currentWidget = this.currentWidget === 'counter'? 'showDate' : 'counter';
   }
 
-  finishLoading() {
-    setInterval(() => {
+  simulateLoading(): void {
+    setTimeout(() => {
       this.isLoading = false;
     }, 2000);
   }
