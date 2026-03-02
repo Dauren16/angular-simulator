@@ -169,7 +169,7 @@ $border-color: #E1E3E4;
 }
 
 .hero {
-  background-image: url('/images/mountains-bg.jpg');
+  background-image: url('/images/backgrounds/mountains-bg.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
@@ -385,19 +385,19 @@ $border-color: #E1E3E4;
   flex-direction: column;
 
   &--lake-vacation {
-    background-image: url('/images/lake-and-boat.png');
+    background-image: url('/images/backgrounds/lake-and-boat.png');
     background-size: cover;
     background-repeat: no-repeat;
   }
 
   &--mountains-vacation {
-    background-image: url('/images/nighty-mountains.png');
+    background-image: url('/images/backgrounds/nighty-mountains.png');
     background-size: cover;
     background-repeat: no-repeat;
   }
 
   &--stretching-vacation {
-    background-image: url('/images/stretching-mountains.png');
+    background-image: url('/images/backgrounds/stretching-mountains.png');
     background-size: cover;
     background-repeat: no-repeat;
   }

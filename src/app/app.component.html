@@ -1,13 +1,13 @@
 @if (isLoading) {
   <div class="loader">
-    <img class="loader__icon" src="/images/loader-icon.svg" alt="#" width="51" height="51">
+    <img class="loader__icon" src="/images/icons/loader-icon.svg" alt="#" width="51" height="51">
   </div>
 } @else {
   <header class="header">
     <div class="container">
       <div class="header__wrapper">
         <div class="header__logo-wrapper">
-          <img class="header__logo" src="/images/company-icon.svg" alt="#">
+          <img class="header__logo" src="/images/icons/company-icon.svg" alt="#">
           <span class="header__logo-title">{{ companyName.toUpperCase() }}</span>
         </div>
         <nav class="header__nav">
@@ -52,12 +52,12 @@
                     <option class="custom-input__option" [value]="location">{{ location.name }}</option>
                   }
                 </select>
-                <img class="custom-input__button-image" src="/images/select-icon.svg" alt="#">
+                <img class="custom-input__button-image" src="/images/icons/select-icon.svg" alt="#">
                 <label class="custom-input__label" for="select-location">выберите из списка</label>
               </div>
               <div class="custom-input">
                 <input [(ngModel)]="selectedDate" type="date" class="custom-input__field" name="select-date" id="select-date" aria-placeholder="Дата похода">
-                <img class="custom-input__button-image" src="/images/calendar-icon.svg" alt="#">
+                <img class="custom-input__button-image" src="/images/icons/calendar-icon.svg" alt="#">
                 <label class="custom-input__label" for="select-date">укажите дату</label>
               </div>
               <div class="custom-input">
@@ -67,7 +67,7 @@
                     <option class="custom-input__option" [value]="participant">{{ participant.title }}</option>
                   }
                 </select>
-                <img class="custom-input__button-image" src="/images/select-icon.svg" alt="#">
+                <img class="custom-input__button-image" src="/images/icons/select-icon.svg" alt="#">
                 <label class="custom-input__label" for="select-participants">выберите из списка</label>
               </div>
               <button [disabled]="!selectedLocation || !selectedDate || !selectedParticipants" class="form__btn btn">Найти программу</button>
@@ -105,7 +105,7 @@
               @for (offer of offers; track offer.id) {
                 <li class="offer__item">
                   <img class="offer__image"
-                  [src]="'/images/' + offer.image + '.png'"
+                  [src]="'/images/' + 'icons/' + offer.image + '.png'"
                   alt="#"
                   width="50"
                   height="50">
@@ -140,7 +140,7 @@
                 <div class="card card--lake-vacation">
                   <div class="card__wrapper">
                     <div class="card__rating">
-                      <img class="card__rating-icon" src="/images/star-icon.svg" alt="#" width="17" height="17">
+                      <img class="card__rating-icon" src="/images/icons/star-icon.svg" alt="#" width="17" height="17">
                       <span class="card__overal-rating">4.9</span>
                     </div>
                     <div class="card__info">
@@ -159,7 +159,7 @@
                 <div class="card card--mountains-vacation">
                   <div class="card__wrapper">
                     <div class="card__rating">
-                      <img class="card__rating-icon" src="/images/star-icon.svg" alt="#">
+                      <img class="card__rating-icon" src="/images/icons/star-icon.svg" alt="#">
                       <span class="card__overal-rating">4.9</span>
                     </div>
                     <div class="card__info">
@@ -178,7 +178,7 @@
                 <div class="card card--stretching-vacation">
                   <div class="card__wrapper">
                     <div class="card__rating">
-                      <img class="card__rating-icon" src="/images/star-icon.svg" alt="#">
+                      <img class="card__rating-icon" src="/images/icons/star-icon.svg" alt="#">
                       <span class="card__overal-rating">4.9</span>
                     </div>
                     <div class="card__info">
@@ -295,16 +295,16 @@
             </div>
             <ul class="social">
               <li class="social__item">
-                <a class="social__link" href="#"><img class="social__image" src="/images/telegram-icon.svg" alt="#"></a>
+                <a class="social__link" href="#"><img class="social__image" src="/images/icons/telegram-icon.svg" alt="#"></a>
               </li>
               <li class="social__item">
-                <a class="social__link" href="#"><img class="social__image" src="/images/vk-icon.svg" alt="#"></a>
+                <a class="social__link" href="#"><img class="social__image" src="/images/icons/vk-icon.svg" alt="#"></a>
               </li>
               <li class="social__item">
-                <a class="social__link" href="#"><img class="social__image" src="/images/pinterest-icon.svg" alt="#"></a>
+                <a class="social__link" href="#"><img class="social__image" src="/images/icons/pinterest-icon.svg" alt="#"></a>
               </li>
               <li class="social__item">
-                <a class="social__link" href="#"><img class="social__image" src="/images/skype-icon.svg" alt="#"></a>
+                <a class="social__link" href="#"><img class="social__image" src="/images/icons/skype-icon.svg" alt="#"></a>
               </li>
             </ul>
           </div>
