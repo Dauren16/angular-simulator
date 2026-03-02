@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import './collection';
 import { FormsModule } from '@angular/forms';
-import { IOffers } from './interfaces/IOffers';
-import { ILocations } from './interfaces/ILocations';
-import { IParticipants } from './interfaces/IParticipants';
+import { IOffer } from './interfaces/IOffer';
+import { ILocation } from './interfaces/ILocation';
+import { IParticipant } from './interfaces/IParticipant';
 
 
 @Component({
@@ -15,23 +15,18 @@ import { IParticipants } from './interfaces/IParticipants';
 })
 export class AppComponent {
 
-  companyName: string = 'румбитет';
+  companyName: string = 'румтибет';
   selectedLocation: string = '';
   selectedParticipants: string ='';
   selectedDate: string = '';
   counter: number = 0;
-  currentTimeAndDate: string = '';
+  currentDateTime: string = '';
   showDate: boolean = false;
   currentWidget: 'counter' | 'showDate' = 'counter';
   liveText: string = '';
   isLoading: boolean = true;
 
-  constructor() {
-    this.startClock();
-    this.simulateLoading();
-  }
-
-  offers: IOffers[] = [
+  offers: IOffer[] = [
     {
       id: 1,
       title: 'Опытный гид',
@@ -52,7 +47,7 @@ export class AppComponent {
     }
   ];
 
-  locations: ILocations[] = [
+  locations: ILocation[] = [
     {
       id: 1,
       name: 'Almaty'
@@ -67,7 +62,7 @@ export class AppComponent {
     }
   ];
 
-  participants: IParticipants[] = [
+  participants: IParticipant[] = [
     {
       id: 1,
       number: 2,
@@ -85,26 +80,27 @@ export class AppComponent {
     }
   ];
 
-  counterIncrease(): void {
+  constructor() {
+    this.startClock();
+    this.simulateLoading();
+  }
+
+  increaseCounter(): void {
     this.counter++;
   }
 
-  counterMinus(): void {
+  decreaseCounter(): void {
     this.counter--;
   }
 
   startClock(): void {
     setInterval(() => {
-      this.currentTimeAndDate = new Date().toString();
+      this.currentDateTime = new Date().toString();
     }, 1000);
   }
 
-  toggleDate(): void {
-    this.showDate = !this.showDate;
-  }
-
-  toggleWidget(): void {
-    this.currentWidget = this.currentWidget === 'counter'? 'showDate' : 'counter';
+  setWidget(widget: 'counter' | 'showDate'): void {
+    this.currentWidget = widget;
   }
 
   simulateLoading(): void {
@@ -112,5 +108,4 @@ export class AppComponent {
       this.isLoading = false;
     }, 2000);
   }
-
 }

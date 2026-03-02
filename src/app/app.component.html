@@ -25,16 +25,16 @@
       <div class="header__secondary-wrapper">
         @if (currentWidget === 'counter') {
           <div class="counter">
-            <button (click)="counterIncrease()" class="counter__plus">+</button>
+            <button (click)="increaseCounter()" class="counter__plus">+</button>
             <span class="counter__value">{{ counter }}</span>
-            <button (click)="counterMinus()" class="counter__minus">-</button>
+            <button (click)="decreaseCounter()" class="counter__minus">-</button>
           </div>
         } @else {
           <div class="header__time-block">
-            <span class="header__time">{{ currentTimeAndDate }}</span>
+            <span class="header__time">{{ currentDateTime }}</span>
           </div>
         }
-        <button (click)="toggleWidget()" class="header__btn btn">{{ currentWidget === 'counter' ? 'Показать дату' : 'Показать кликер' }}</button>
+        <button (click)="setWidget(currentWidget === 'counter' ? 'showDate' : 'counter')" class="header__btn btn">{{ currentWidget === 'counter' ? 'показать дату' : 'показать кликер' }}</button>
       </div>
     </div>
   </header>
