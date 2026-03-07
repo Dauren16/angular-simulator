@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import './collection';
 import { FormsModule } from '@angular/forms';
 import { IOffer } from './interfaces/IOffer';
 import { ILocation } from './interfaces/ILocation';
 import { IParticipant } from './interfaces/IParticipant';
-
+import { MessageManagementService } from './services/message-management.service';
+import { Message } from '../enums/Message';
+import { NgTemplateOutlet } from '@angular/common';
+import { LocalStorageService } from './services/local-storage.service';
 
 @Component({
   selector: 'app-root',
-  imports: [FormsModule],
+  imports: [FormsModule, NgTemplateOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   standalone: true,
@@ -16,15 +19,19 @@ import { IParticipant } from './interfaces/IParticipant';
 export class AppComponent {
 
   companyName: string = 'румтибет';
-  selectedLocation: string = '';
-  selectedParticipants: string ='';
-  selectedDate: string = '';
+  selectedLocation!: string;
+  selectedParticipants!: string;
+  selectedDate!: string;
   counter: number = 0;
-  currentDateTime: string = '';
+  currentDateTime!: string;
   showDate: boolean = false;
   currentWidget: 'counter' | 'showDate' = 'counter';
-  liveText: string = '';
+  liveText!: string;
   isLoading: boolean = true;
+
+  messageService: MessageManagementService = inject(MessageManagementService);
+  storageService: LocalStorageService = inject(LocalStorageService);
+  Message =  Message;
 
   offers: IOffer[] = [
     {
@@ -107,5 +114,12 @@ export class AppComponent {
     setTimeout(() => {
       this.isLoading = false;
     }, 2000);
+  }
+
+  addMessage(text: string, type: Message): void {
+    this.messageService.addMessage({
+      message: text,
+      type: type
+    });
   }
 }
