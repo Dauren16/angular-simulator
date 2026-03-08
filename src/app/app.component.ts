@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IOffer } from './interfaces/IOffer';
 import { ILocation } from './interfaces/ILocation';
 import { IParticipant } from './interfaces/IParticipant';
-import { MessageManagementService } from './services/message-management.service';
+import { MessageService } from './services/message.service';
 import { Message } from '../enums/Message';
 import { NgTemplateOutlet } from '@angular/common';
 import { LocalStorageService } from './services/local-storage.service';
@@ -17,7 +17,6 @@ import { LocalStorageService } from './services/local-storage.service';
   standalone: true,
 })
 export class AppComponent {
-
   companyName: string = 'румтибет';
   selectedLocation!: string;
   selectedParticipants!: string;
@@ -28,29 +27,29 @@ export class AppComponent {
   currentWidget: 'counter' | 'showDate' = 'counter';
   liveText!: string;
   isLoading: boolean = true;
+  message: typeof Message = Message;
 
-  messageService: MessageManagementService = inject(MessageManagementService);
+  messageService: MessageService = inject(MessageService);
   storageService: LocalStorageService = inject(LocalStorageService);
-  Message =  Message;
 
   offers: IOffer[] = [
     {
       id: 1,
       title: 'Опытный гид',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-      image: 'gid-icon'
+      image: 'gid'
     },
     {
       id: 2,
       title: 'Безопасный поход',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-      image: 'shield-icon'
+      image: 'shield'
     },
     {
       id: 3,
       title: 'Лояльные цены',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
-      image: 'sale-ticket-icon'
+      image: 'sale-ticket'
     }
   ];
 
@@ -116,10 +115,10 @@ export class AppComponent {
     }, 2000);
   }
 
-  addMessage(text: string, type: Message): void {
+  addMessage(message: string, type: Message): void {
     this.messageService.addMessage({
-      message: text,
-      type: type
+      message,
+      type
     });
   }
 }

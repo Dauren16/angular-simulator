@@ -4,8 +4,7 @@ import { IMessage } from '../interfaces/IMessage';
 @Injectable({
   providedIn: 'root',
 })
-export class MessageManagementService {
-
+export class MessageService {
   private messages: IMessage[] = [];
 
   getMessages(): IMessage[] {
@@ -13,10 +12,9 @@ export class MessageManagementService {
   }
 
   addMessage(message: IMessage): void {
-    this.messages.push(message);
-
+    this.messages = [...this.messages, message];
     setTimeout(() => {
-      this.messages.shift()
+      this.messages = this.messages.filter(currentMessage => currentMessage !== message)
     }, 5000);
   }
 
