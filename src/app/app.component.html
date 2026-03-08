@@ -1,13 +1,13 @@
 @if (isLoading) {
   <div class="loader">
-    <img class="loader__icon" src="/images/icons/loader-icon.svg" alt="#" width="51" height="51">
+    <img class="loader__icon" src="/images/icons/loader.svg" alt="#" width="51" height="51">
   </div>
 } @else {
   <header class="header">
     <div class="container">
       <div class="header__wrapper">
         <div class="header__logo-wrapper">
-          <img class="header__logo" src="/images/icons/company-icon.svg" alt="#">
+          <img class="header__logo" src="/images/icons/company.svg" alt="#">
           <span class="header__logo-title">{{ companyName.toUpperCase() }}</span>
         </div>
         <nav class="header__nav">
@@ -52,12 +52,12 @@
                     <option class="custom-input__option" [value]="location">{{ location.name }}</option>
                   }
                 </select>
-                <img class="custom-input__button-image" src="/images/icons/select-icon.svg" alt="#">
+                <img class="custom-input__button-image" src="/images/icons/select.svg" alt="#">
                 <label class="custom-input__label" for="select-location">выберите из списка</label>
               </div>
               <div class="custom-input">
                 <input [(ngModel)]="selectedDate" type="date" class="custom-input__field" name="select-date" id="select-date" aria-placeholder="Дата похода">
-                <img class="custom-input__button-image" src="/images/icons/calendar-icon.svg" alt="#">
+                <img class="custom-input__button-image" src="/images/icons/calendar.svg" alt="#">
                 <label class="custom-input__label" for="select-date">укажите дату</label>
               </div>
               <div class="custom-input">
@@ -67,7 +67,7 @@
                     <option class="custom-input__option" [value]="participant">{{ participant.title }}</option>
                   }
                 </select>
-                <img class="custom-input__button-image" src="/images/icons/select-icon.svg" alt="#">
+                <img class="custom-input__button-image" src="/images/icons/select.svg" alt="#">
                 <label class="custom-input__label" for="select-participants">выберите из списка</label>
               </div>
               <button [disabled]="!selectedLocation || !selectedDate || !selectedParticipants" class="form__btn btn">Найти программу</button>
@@ -89,7 +89,7 @@
             <span class="hike__title section-title">о нашем походе</span>
             <h2 class="hike__heading section-heading">Исследуйте все горные массивы мира вместе с нами</h2>
             <p class="hike__description section-descr">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.</p>
-            <button class="hike__btn btn">Программа тура</button>
+            <button class="hike__btn btn" (click)="addMessage('Программа тура', message.SUCCESS)">Программа тура</button>
           </div>
         </div>
       </div>
@@ -116,7 +116,7 @@
                 </li>
               }
             </ul>
-            <button class="offer_btn btn">Стоимость программ</button>
+            <button class="offer_btn btn" (click)="addMessage('Программы недоступны', message.ERROR)">Стоимость программ</button>
           </div>
           <div class="offer__visual-block">
             <img class="offer__visual-pictures" src="/images/coffee-vacation.png" alt="#" width="250" height="250">
@@ -140,7 +140,7 @@
                 <div class="card card--lake-vacation">
                   <div class="card__wrapper">
                     <div class="card__rating">
-                      <img class="card__rating-icon" src="/images/icons/star-icon.svg" alt="#" width="17" height="17">
+                      <img class="card__rating-icon" src="/images/icons/star.svg" alt="#" width="17" height="17">
                       <span class="card__overal-rating">4.9</span>
                     </div>
                     <div class="card__info">
@@ -159,7 +159,7 @@
                 <div class="card card--mountains-vacation">
                   <div class="card__wrapper">
                     <div class="card__rating">
-                      <img class="card__rating-icon" src="/images/icons/star-icon.svg" alt="#">
+                      <img class="card__rating-icon" src="/images/icons/star.svg" alt="#">
                       <span class="card__overal-rating">4.9</span>
                     </div>
                     <div class="card__info">
@@ -178,7 +178,7 @@
                 <div class="card card--stretching-vacation">
                   <div class="card__wrapper">
                     <div class="card__rating">
-                      <img class="card__rating-icon" src="/images/icons/star-icon.svg" alt="#">
+                      <img class="card__rating-icon" src="/images/icons/star.svg" alt="#">
                       <span class="card__overal-rating">4.9</span>
                     </div>
                     <div class="card__info">
@@ -193,7 +193,7 @@
               </a>
             </li>
           </ul>
-          <button class="popular__btn btn">Рейтинг направлений</button>
+          <button class="popular__btn btn" (click)="addMessage('Рейтинг направлений отсутствует', message.INFO)">Рейтинг направлений</button>
         </div>
       </div>
     </section>
@@ -258,7 +258,7 @@
               </div>
             </article>
           </div>
-          <button class="travel__btn btn">Другие материалы</button>
+          <button class="travel__btn btn" (click)="addMessage('Материалы загружены', message.SUCCESS)">Другие материалы</button>
         </div>
       </div>
     </section>
@@ -277,7 +277,7 @@
             <img class="photo-report__image" src="/images/canion.jpg" alt="#">
             <img class="photo-report__image" src="/images/diary.jpg" alt="#">
           </div>
-          <button class="photo-report__btn btn">Наш pinterest</button>
+          <button class="photo-report__btn btn" (click)="addMessage('Внимание переход на внешний ресурс', message.WARN)">Наш pinterest</button>
         </div>
       </div>
     </section>
@@ -295,16 +295,16 @@
             </div>
             <ul class="social">
               <li class="social__item">
-                <a class="social__link" href="#"><img class="social__image" src="/images/icons/telegram-icon.svg" alt="#"></a>
+                <a class="social__link" href="#"><img class="social__image" src="/images/icons/telegram.svg" alt="#"></a>
               </li>
               <li class="social__item">
-                <a class="social__link" href="#"><img class="social__image" src="/images/icons/vk-icon.svg" alt="#"></a>
+                <a class="social__link" href="#"><img class="social__image" src="/images/icons/vk.svg" alt="#"></a>
               </li>
               <li class="social__item">
-                <a class="social__link" href="#"><img class="social__image" src="/images/icons/pinterest-icon.svg" alt="#"></a>
+                <a class="social__link" href="#"><img class="social__image" src="/images/icons/pinterest.svg" alt="#"></a>
               </li>
               <li class="social__item">
-                <a class="social__link" href="#"><img class="social__image" src="/images/icons/skype-icon.svg" alt="#"></a>
+                <a class="social__link" href="#"><img class="social__image" src="/images/icons/skype.svg" alt="#"></a>
               </li>
             </ul>
           </div>
@@ -361,4 +361,28 @@
     </div>
   </div>
 }
+
+<div class="messages">
+  @for (message of messageService.getMessages(); track $index; let i = $index) {
+    <ng-container [ngTemplateOutlet]="messageTemplate" [ngTemplateOutletContext]="{ message: message, index: i }"></ng-container>
+  }
+</div>
+
+<ng-template #messageTemplate let-message="message" let-i="index">
+  <div class="message">
+    <div class="message__wrapper">
+      <div class="message__content">
+        <img class="message__image" src="/images/icons/convert.svg" alt="#">
+        <div class="message__text-wrapper">
+          <span class="message__title">{{ message.type }}</span>
+          <span class="message__text">{{ message.message  }}</span>
+        </div>
+      </div>
+      <button class="message__close-btn" (click)="messageService.closeMessage(i)">
+        <img src="/images/icons/close.svg" alt="#">
+      </button>
+    </div>
+  </div>
+</ng-template>
+
 
