@@ -5,6 +5,7 @@ import { IMessage } from '../interfaces/IMessage';
   providedIn: 'root',
 })
 export class MessageService {
+
   private messages: IMessage[] = [];
 
   getMessages(): IMessage[] {
@@ -12,13 +13,13 @@ export class MessageService {
   }
 
   addMessage(message: IMessage): void {
-    this.messages = [...this.messages, message];
+    this.messages = [message, ...this.messages];
     setTimeout(() => {
-      this.messages = this.messages.filter(currentMessage => currentMessage !== message)
+      this.messages = this.messages.filter((currentMessage: IMessage) => currentMessage !== message)
     }, 5000);
   }
 
-  closeMessage(index: number): void {
-    this.messages.splice(index, 1);
+  closeMessage(id: number): void {
+    this.messages = this.messages.filter((message: IMessage) => message.id !== id);
   }
 }

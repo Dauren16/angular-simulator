@@ -117,6 +117,7 @@ export class AppComponent {
 
   addMessage(message: string, type: Message): void {
     this.messageService.addMessage({
+      id: Date.now(),
       message,
       type
     });
