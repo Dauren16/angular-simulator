@@ -15,11 +15,12 @@ export class MessageService {
   addMessage(message: IMessage): void {
     this.messages = [message, ...this.messages];
     setTimeout(() => {
-      this.messages = this.messages.filter((currentMessage: IMessage) => currentMessage !== message)
+      this.messages = this.messages.filter((currentMessage: IMessage) => currentMessage !== message);
     }, 5000);
   }
 
   closeMessage(id: number): void {
     this.messages = this.messages.filter((message: IMessage) => message.id !== id);
   }
+
 }
