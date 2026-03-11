@@ -17,6 +17,7 @@ import { LocalStorageService } from './services/local-storage.service';
   standalone: true,
 })
 export class AppComponent {
+
   companyName: string = 'румтибет';
   selectedLocation!: string;
   selectedParticipants!: string;
@@ -113,14 +114,6 @@ export class AppComponent {
     setTimeout(() => {
       this.isLoading = false;
     }, 2000);
-  }
-
-  addMessage(message: string, type: Message): void {
-    this.messageService.addMessage({
-      id: Date.now(),
-      message,
-      type
-    });
   }
 
 }
