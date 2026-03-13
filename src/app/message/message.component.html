@@ -1,0 +1,22 @@
+<div class="messages">
+  @for (message of messageService.getMessages(); track $index) {
+    <ng-container [ngTemplateOutlet]="messageTemplate" [ngTemplateOutletContext]="{ message: message }"></ng-container>
+  }
+</div>
+
+<ng-template #messageTemplate let-message="message">
+  <div class="message">
+    <div class="message__wrapper">
+      <div class="message__content">
+        <img class="message__image" src="/images/icons/convert.svg" alt="#">
+        <div class="message__text-wrapper">
+          <span class="message__title">{{ message.type }}</span>
+          <span class="message__text">{{ message.message  }}</span>
+        </div>
+      </div>
+      <button class="message__close-btn" (click)="messageService.closeMessage(message)">
+        <img src="/images/icons/close.svg" alt="#">
+      </button>
+    </div>
+  </div>
+</ng-template>
