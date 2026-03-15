@@ -22,15 +22,15 @@ export class MessageService {
     this.messages = this.messages.filter((currentMessage: IMessage) => currentMessage !== message);
   }
 
-  showWarn(text: string):void {
+  showWarn(text: string): void {
     this.addMessage({ message: text, type: Message.WARN });
   }
 
-  showError(text: string):void {
+  showError(text: string): void {
     this.addMessage({ message: text, type: Message.ERROR });
   }
 
-  showSuccess(text: string):void {
+  showSuccess(text: string): void {
     this.addMessage({ message: text, type: Message.SUCCESS });
   }
 
