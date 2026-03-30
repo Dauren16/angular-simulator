@@ -10,15 +10,15 @@ import { MessageService } from './message.service';
 })
 export class UserService {
   
-  private userSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
   private userApiService: UserApiService = inject(UserApiService);
   private loaderService: LoaderService = inject(LoaderService);
   private messageService: MessageService = inject(MessageService);
 
+  private userSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
   users$: Observable<IUser[]> = this.userSubject.asObservable();
 
-  getUsers(): Observable<IUser[]> {
-    return this.users$;
+  getUsers(): IUser[] {
+    return this.userSubject.getValue();
   }
 
   setUsers(user: IUser[]): void {
@@ -27,14 +27,13 @@ export class UserService {
 
   loadUsers(): Observable<IUser[]> {
     this.loaderService.showLoader(); 
-    return this.userApiService.getUsers().pipe(
-      catchError(() => {
-        this.messageService.showError('Нет пользователей для отображения')
-        return of<IUser[]>([])
-      }),
-      tap(users => this.setUsers(users)),
-      finalize(() => this.loaderService.hideLoader())
-    );
+    return this.userApiService.getUsers()
+      .pipe(
+        finalize(() => this.loaderService.hideLoader()),
+        catchError(() => { this.messageService.showError('Нет пользователей для отображения');
+          return of([])
+        }),
+      );
   }
 
 }

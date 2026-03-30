@@ -9,14 +9,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class MessageService {
 
   private messageSubject: BehaviorSubject<IMessage[]> = new BehaviorSubject<IMessage[]>([]);
+  messages$: Observable<IMessage[]> = this.messageSubject.asObservable();
 
-  message$: Observable<IMessage[]> = this.messageSubject.asObservable();
-
-  addMessage(message: Omit<IMessage, 'id'>): void {
-    const currentMessage = this.messageSubject.getValue()
-    const withId = { ...message, id: Date.now() }
-    this.messageSubject.next([ ...currentMessage, withId ])
-    setTimeout(() => { this.closeMessage(withId) }, 5000);
+  addMessage(message: string, type: Message): void {
+    const currentMessage = this.messageSubject.getValue();
+    const newMessage: IMessage = { type, message, id: Date.now() };
+    this.messageSubject.next([ ...currentMessage, newMessage ]);
+    setTimeout(() => { this.closeMessage(newMessage); }, 5000);
   }
 
   closeMessage(message: IMessage): void {
@@ -29,19 +28,19 @@ export class MessageService {
   }
 
   showWarn(text: string): void {
-    this.addMessage({ message: text, type: Message.WARN });
+    this.addMessage(text, Message.WARN);
   }
 
   showError(text: string): void {
-    this.addMessage({ message: text, type: Message.ERROR });
+    this.addMessage(text, Message.ERROR);
   }
 
   showSuccess(text: string): void {
-    this.addMessage({ message: text, type: Message.SUCCESS });
+    this.addMessage(text, Message.SUCCESS);
   }
 
   showInfo(text: string): void {
-    this.addMessage({ message: text, type: Message.INFO });
+    this.addMessage(text, Message.INFO);
   }
 
 }

@@ -1,3 +1,8 @@
-<div class="loader">
-  <img class="loader__icon" src="/images/icons/loader.svg" alt="#" width="51" height="51">
-</div>
+@if(loader$ | async) {
+  <div class="loader">
+    <div class="loader__loading--block">
+      <img class="loader__icon" src="/images/icons/loader.svg" alt="#" width="51" height="51">
+    </div>
+  </div>
+}
+

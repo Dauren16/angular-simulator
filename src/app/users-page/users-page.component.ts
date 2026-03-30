@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { UserApiService } from '../services/user-api.service';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { IUser } from '../interfaces/IUser';
 import { AsyncPipe } from '@angular/common';
 
@@ -13,11 +13,14 @@ import { AsyncPipe } from '@angular/common';
 })
 export class UsersPageComponent implements OnInit {
 
-  usersService: UserService = inject(UserService);
-  users$: Observable<IUser[]> = this.usersService.getUsers();
+  userService: UserService = inject(UserService);
+  users$: Observable<IUser[]> = this.userService.users$;
 
   ngOnInit(): void {
-    this.usersService.loadUsers().subscribe()
+    this.userService.loadUsers()
+    .pipe(
+      tap((users: IUser[]) => this.userService.setUsers(users)),
+    ).subscribe();
   }
 
 }

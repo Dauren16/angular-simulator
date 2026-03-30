@@ -15,14 +15,21 @@ $border-color: #E1E3E4;
 
 .loader {
   position: fixed;
-  height: 100vh;
   inset: 0;
-  width: 100%;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 9999;
   background: rgba(0, 0, 0, 0.6);
+  cursor: wait;
+
+  &__loading-block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 
   &__icon {
     animation: spin 1s linear infinite;
@@ -30,10 +37,10 @@ $border-color: #E1E3E4;
 
   @keyframes spin {
     from {
-      transform: rotate(360deg);
+      transform: rotate(0deg);
     }
     to {
-      transform: rotate(0deg);
+      transform: rotate(360deg);
     }
   }
 }

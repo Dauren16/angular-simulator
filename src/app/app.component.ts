@@ -22,8 +22,6 @@ import { LoaderService } from './services/loader.service';
 export class AppComponent {
 
   storageService: LocalStorageService = inject(LocalStorageService);
-  loaderService: LoaderService = inject(LoaderService)
-
-  loader$ = this.loaderService.loader$;
+  loaderService: LoaderService = inject(LoaderService);
 
 }
