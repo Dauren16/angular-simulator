@@ -18,9 +18,10 @@ export class UsersPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.loadUsers()
-    .pipe(
-      tap((users: IUser[]) => this.userService.setUsers(users)),
-    ).subscribe();
+      .pipe(
+        tap((users: IUser[]) => this.userService.setUsers(users)),
+      )
+      .subscribe();
   }
 
 }

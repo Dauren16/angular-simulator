@@ -14,24 +14,25 @@ export class UserService {
   private loaderService: LoaderService = inject(LoaderService);
   private messageService: MessageService = inject(MessageService);
 
-  private userSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
-  users$: Observable<IUser[]> = this.userSubject.asObservable();
+  private usersSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
+  users$: Observable<IUser[]> = this.usersSubject.asObservable();
 
   getUsers(): IUser[] {
-    return this.userSubject.getValue();
+    return this.usersSubject.getValue();
   }
 
   setUsers(user: IUser[]): void {
-    this.userSubject.next(user);
+    this.usersSubject.next(user);
   }
 
-  loadUsers(): Observable<IUser[]> {
-    this.loaderService.showLoader(); 
+  loadUsers(): Observable<IUser[]> { 
     return this.userApiService.getUsers()
       .pipe(
+        tap(() => this.loaderService.showLoader()),
         finalize(() => this.loaderService.hideLoader()),
-        catchError(() => { this.messageService.showError('Нет пользователей для отображения');
-          return of([])
+        catchError(() => { 
+          this.messageService.showError('Нет пользователей для отображения');
+          return of([]);
         }),
       );
   }
