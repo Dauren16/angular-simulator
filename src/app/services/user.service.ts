@@ -25,11 +25,23 @@ export class UserService {
     return this.usersSubject.getValue();
   }
 
-  setUsers(user: IUser[]): void {
-    this.usersSubject.next(user);
+  setUsers(users: IUser[]): void {
+    this.usersSubject.next(users);
+    this.localStorageService.setItem(this.USERS_KEY, users);
   }
 
-  loadUsers(): Observable<IUser[]> { 
+  getUsersFromCache(): IUser[] | null {
+    return this.localStorageService.getItem<IUser[]>(this.USERS_KEY);
+  }
+
+  loadUsers(): Observable<IUser[]> {
+    const cachedUsers = this.getUsersFromCache();
+    
+    if(cachedUsers) {
+      this.setUsers(cachedUsers);
+      return of(cachedUsers);
+    }
+    
     return this.userApiService.getUsers()
       .pipe(
         tap(() => this.loaderService.showLoader()),
@@ -43,15 +55,14 @@ export class UserService {
 
   deleteUser(id: number): void {
     const users: IUser[] =  this.usersSubject.getValue()
-    .filter((deletedUser: IUser) => deletedUser.id !== id);
-    this.usersSubject.next(users);
-    this.localStorageService.setItem(this.USERS_KEY, users);
+      .filter((deletedUser: IUser) => deletedUser.id !== id);
+    this.setUsers(users);
   }
 
   addUser(user: IUser): void {
     const users: IUser[] = this.usersSubject.getValue();
     this.usersSubject.next([...users, user]);
-    this.localStorageService.setItem(this.USERS_KEY, users);
+    this.setUsers(users);
   }
 
 }

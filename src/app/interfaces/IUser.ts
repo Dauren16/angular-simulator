@@ -18,8 +18,8 @@ interface IAddress {
 }
 
 interface IGeolocation {
-  lat: number | null;
-  lng: number | null;
+  lat: number;
+  lng: number;
 }
 
 interface ICompany {

@@ -11,16 +11,18 @@ import { debounceTime, distinctUntilChanged, tap } from 'rxjs';
 })
 export class UsersFilterComponent implements OnInit {
 
-  searchControl: FormControl = new FormControl('');
-  @Output() filterChange = new EventEmitter<string>();
+  @Output() filterChange: EventEmitter<string> = new EventEmitter<string>();
+  filterControl: FormControl = new FormControl('');
   private destroyRef: DestroyRef = inject(DestroyRef);
 
   ngOnInit(): void {
-    this.searchControl.valueChanges.pipe(
-      debounceTime(200),
-      distinctUntilChanged(),
-      tap((value: string | null) => this.filterChange.emit(value ?? '')),
-      takeUntilDestroyed(this.destroyRef),
-    ).subscribe();
+    this.filterControl.valueChanges
+      .pipe(
+        debounceTime(200),
+        distinctUntilChanged(),
+        tap((value: string | null) => this.filterChange.emit(value ?? '')),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe();
   }
 }

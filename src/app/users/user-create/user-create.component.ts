@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IUser } from '../../interfaces/IUser';
 
 @Component({
@@ -11,10 +11,9 @@ import { IUser } from '../../interfaces/IUser';
 export class UserCreateComponent {
 
   private fb: FormBuilder = inject(FormBuilder);
-
   @Output() createUser: EventEmitter<IUser> = new EventEmitter<IUser>();
 
-  form = this.fb.group({
+  form: FormGroup = this.fb.group({
     name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
     username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
     email: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
@@ -35,11 +34,13 @@ export class UserCreateComponent {
       catchPhrase: ['', [Validators.maxLength(200)]],
       bs: ['', [Validators.maxLength(100)]]
     })
-  })
+  });
 
   onSubmit(): void {
-    if(this.form.invalid) return;
-
+    if(this.form.invalid) {
+      return;
+    }
+      
     const newUser: IUser = {
       id: Date.now(),
       ...this.form.getRawValue()

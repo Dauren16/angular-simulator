@@ -24,13 +24,11 @@ export class UsersPageComponent implements OnInit {
     this.userService.users$,
     this.filterSubject.asObservable()
   ]).pipe(
-      map(([users, query]: [IUser[], string]) => {
-        const trimmed = (query ?? '').trim().toLowerCase();
-        return trimmed ? users.filter((user: IUser) => 
-          user.name.toLowerCase().includes(trimmed)) : users;
-      })
+      map(([users, query]: [IUser[], string]) => 
+        users.filter((user: IUser) => 
+          user.name.toLowerCase().includes(query.trim().toLowerCase()))
+      )
   );
-
 
   ngOnInit(): void {
     this.userService.loadUsers()
