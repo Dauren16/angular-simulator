@@ -11,7 +11,7 @@ $colored-value: #D4A373;
 
 .users-list {
   list-style-type: none;
-  padding: 50px 0 180px 0;
+  padding: 180px 0 180px 0;
   margin: 0;
   display: flex;
   row-gap: 70px;
@@ -109,6 +109,16 @@ $colored-value: #D4A373;
     display: flex;
     gap: 4px;
   }
+
+  &__delete-btn {
+    background-color: red;
+    border-radius: 10px;
+    margin: 0;
+    padding: 15px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
 }
 
 .geo-value {
@@ -127,4 +137,3 @@ $colored-value: #D4A373;
   width: 189px;
   text-align: end;
 }
-

@@ -41,3 +41,5 @@ const games: string[] = ['CS 2', 'DOTA 2', 'GTA 6', 'Resident Evil', 'Aliens'];
 const collectionGame: Collection<string>  = new Collection(games);
 collectionGame.getAll();
 collectionGame.replaceByIndex(3, 'Watch Dogs 2');
+
+
