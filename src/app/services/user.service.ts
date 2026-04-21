@@ -16,7 +16,7 @@ export class UserService {
   private messageService: MessageService = inject(MessageService);
   private localStorageService: LocalStorageService = inject(LocalStorageService);
   
-  private readonly USERS_KEY = 'users';
+  private readonly USERS_KEY: 'users' = 'users';
 
   private usersSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
   users$: Observable<IUser[]> = this.usersSubject.asObservable();
@@ -35,7 +35,7 @@ export class UserService {
   }
 
   loadUsers(): Observable<IUser[]> {
-    const cachedUsers = this.getUsersFromCache();
+    const cachedUsers: IUser[] | null = this.getUsersFromCache();
     
     if(cachedUsers) {
       this.setUsers(cachedUsers);
@@ -61,8 +61,7 @@ export class UserService {
 
   addUser(user: IUser): void {
     const users: IUser[] = this.usersSubject.getValue();
-    this.usersSubject.next([...users, user]);
-    this.setUsers(users);
+    this.setUsers([...users, user]);
   }
 
 }

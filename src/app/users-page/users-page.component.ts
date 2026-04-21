@@ -18,7 +18,7 @@ export class UsersPageComponent implements OnInit {
 
   userService: UserService = inject(UserService);
   users$: Observable<IUser[]> = this.userService.users$;
-  filterSubject = new BehaviorSubject<string>('');
+  filterSubject: BehaviorSubject< string> = new BehaviorSubject<string>('');
 
   filteredUsers$: Observable<IUser[]> = combineLatest([
     this.userService.users$,
