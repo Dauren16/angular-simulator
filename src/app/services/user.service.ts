@@ -36,12 +36,10 @@ export class UserService {
 
   loadUsers(): Observable<IUser[]> {
     const cachedUsers: IUser[] | null = this.getUsersFromCache();
-    
-    if(cachedUsers) {
+    if (cachedUsers) {
       this.setUsers(cachedUsers);
       return of(cachedUsers);
     }
-    
     return this.userApiService.getUsers()
       .pipe(
         tap(() => this.loaderService.showLoader()),
