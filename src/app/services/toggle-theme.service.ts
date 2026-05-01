@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { LocalStorageService } from './local-storage.service';
 import { usePreset } from '@primeuix/themes';
-import { BehaviorSubject, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { ThemeMode, ThemeName } from '../../enums/Theme';
 import { PRESETS } from '../presets/IPRESET';
 
@@ -15,8 +15,8 @@ export class ToggleThemeService {
   private themeModeSubject: BehaviorSubject<ThemeMode> = new BehaviorSubject(this.localStorageService.getItem<ThemeMode>('theme') ?? ThemeMode.DARK);
   private themeNameSubject: BehaviorSubject<ThemeName> = new BehaviorSubject(this.localStorageService.getItem<ThemeName>('theme-name') ?? ThemeName.AURA);
 
-  themeMode$ = this.themeModeSubject.asObservable();
-  themeName$ = this.themeNameSubject.asObservable();
+  themeMode$: Observable<ThemeMode> = this.themeModeSubject.asObservable();
+  themeName$: Observable<ThemeName> = this.themeNameSubject.asObservable();
 
   constructor() {
     this.themeNameSubject.pipe(
