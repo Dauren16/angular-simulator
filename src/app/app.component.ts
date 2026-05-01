@@ -10,6 +10,8 @@ import { MessageComponent } from './message/message.component';
 import { LoaderComponent } from "./loader/loader.component";
 import { AsyncPipe } from '@angular/common';
 import { LoaderService } from './services/loader.service';
+import { ToggleThemeService } from './services/toggle-theme.service';
+
 
 
 @Component({

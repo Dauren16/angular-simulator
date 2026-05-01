@@ -1,42 +1,3 @@
-$main-text-color: #18121E;
-$accent-text-color: #FDFDFD;
-$black-color: #000000;
-$white-color: #FFFFFF;
-$btn-main-color: #1A3E3E;
-$btn-accent-color: #FDFDFD;
-$section-title-text-color: #F2BE22;
-$section-bg-color: #F3F5F4;
-$article-bg-color: #FDFDFD;
-$footer-bg-color: #1A3E3E;
-$fw-400: 400;
-$fw-700: 700;
-$fw-800: 800;
-$border-color: #E1E3E4;
-
-.btn {
-  padding: 16px 36px;
-  color: $accent-text-color;
-  border-radius: 4px;
-  font-weight: $fw-700;
-  line-height: 20px;
-  margin: 0;
-  border: none;
-  background-color: $btn-main-color;
-  cursor: pointer;
-  align-self: flex-start;
-
-  &:disabled {
-    background-color: gray;
-    color: #696969;
-    cursor: not-allowed;
-  }
-
-  &:hover {
-    background-color: $black-color;
-    color: $white-color;
-  }
-}
-
 .counter {
   display: flex;
   gap: 10px;
@@ -44,7 +5,7 @@ $border-color: #E1E3E4;
 
   &__plus {
     background-color: transparent;
-    color: $white-color;
+    color: var(--active-text-color);
     margin: 0;
     padding: 0;
     border: none;
@@ -53,7 +14,7 @@ $border-color: #E1E3E4;
 
   &__minus {
     background-color: transparent;
-    color: $white-color;
+    color: var(--active-text-color);
     margin: 0;
     padding: 0;
     border: none;
@@ -61,7 +22,7 @@ $border-color: #E1E3E4;
   }
 
   &__value {
-    color: $white-color;
+    color: var(--active-text-color);
   }
 }
 
@@ -92,7 +53,7 @@ $border-color: #E1E3E4;
   }
 
   &__logo-title {
-    color: $accent-text-color;
+    color: var(--accent-text-color);
   }
 
   &__nav-list {
@@ -104,7 +65,7 @@ $border-color: #E1E3E4;
   }
 
   &__nav-link {
-    color: $accent-text-color;
+    color: var(--accent-text-color);
     text-decoration: none;
     &--active {
       color: #1A3E3E;
@@ -112,8 +73,8 @@ $border-color: #E1E3E4;
   }
 
   &__btn {
-    background-color: $btn-accent-color;
-    color: $btn-main-color;
+    background-color: var(--btn-accent-color);
+    color: var(--btn-main-color);
   }
 
   &__time-block {
@@ -123,7 +84,7 @@ $border-color: #E1E3E4;
   }
 
   &__time {
-    color: $white-color;
+    color: var(--active-text-color);
   }
 
 }

@@ -1,47 +1,8 @@
-$main-text-color: #18121E;
-$accent-text-color: #FDFDFD;
-$black-color: #000000;
-$white-color: #FFFFFF;
-$btn-main-color: #1A3E3E;
-$btn-accent-color: #FDFDFD;
-$section-title-text-color: #F2BE22;
-$section-bg-color: #F3F5F4;
-$article-bg-color: #FDFDFD;
-$footer-bg-color: #1A3E3E;
-$fw-400: 400;
-$fw-700: 700;
-$fw-800: 800;
-$border-color: #E1E3E4;
-
-.btn {
-  padding: 16px 36px;
-  color: $accent-text-color;
-  border-radius: 4px;
-  font-weight: $fw-700;
-  line-height: 20px;
-  margin: 0;
-  border: none;
-  background-color: $btn-main-color;
-  cursor: pointer;
-  align-self: flex-start;
-
-  &:disabled {
-    background-color: gray;
-    color: #696969;
-    cursor: not-allowed;
-  }
-
-  &:hover {
-    background-color: $black-color;
-    color: $white-color;
-  }
-}
-
 .section-title {
   font-size: 24px;
-  color: $section-title-text-color;
+  color: var(--section-title-text-color);
   line-height: 20px;
-  font-weight: $fw-400;
+  font-weight: var(--fw-400);
   margin-bottom: 8px;
 }
 
@@ -49,12 +10,12 @@ $border-color: #E1E3E4;
   font-size: 32px;
   font-weight: 800;
   line-height: 120%;
-  color: $main-text-color;
+  color: var(--main-text-color);
   margin: 0;
 }
 
 .footer {
-  background-color: $footer-bg-color;
+  background-color: var(--footer-bg-color);
   padding: 178px 0 80px 0;
 
   &__wrapper {
@@ -70,16 +31,16 @@ $border-color: #E1E3E4;
   &__title {
     font-size: 20px;
     line-height: 24px;
-    font-weight: $fw-700;
-    color: $accent-text-color;
+    font-weight: var(--fw-700);
+    color: var(--accent-text-color);
     margin: 0 0 17px 0;
   }
 
   &__company-description {
     font-size: 14px;
     line-height: 20px;
-    font-weight: $fw-400;
-    color: $white-color;
+    font-weight: var(--fw-400);
+    color: var(--active-text-color);
     margin: 0 0 80px 0;
   }
 
@@ -90,7 +51,7 @@ $border-color: #E1E3E4;
   }
 
   &__company-contact {
-    color: $white-color;
+    color: var(--active-text-color);
     text-decoration: none;
     font-size: 14px;
     line-height: 18px;
@@ -122,10 +83,10 @@ $border-color: #E1E3E4;
 
   &__link {
     text-decoration: none;
-    color: $white-color;
+    color: var(--active-text-color);
     font-size: 14px;
     line-height: 18px;
-    font-weight: $fw-400;
+    font-weight: var(--fw-400);
   }
 
   &__form {
@@ -133,7 +94,7 @@ $border-color: #E1E3E4;
     display: flex;
     gap: 60px;
     padding: 40px 100px;
-    background-color: #FDFDFD;
+    background-color: var(--form-bg-color);
     position: absolute;
     top: -100%;
     box-shadow: 0px 0px 15px 0px #18121E1F;
@@ -161,7 +122,7 @@ $border-color: #E1E3E4;
     font-size: 16px;
     line-height: 20px;
     font-weight: 600;
-    color: #18121E;
+    color: var(--main-text-color);
     margin: 0;
   }
 
@@ -183,11 +144,11 @@ $border-color: #E1E3E4;
     font-size: 14px;
     line-height: 20px;
     font-weight: 300;
-    color: #18121E;
+    color: var(--main-text-color);
     align-self: flex-start;
     justify-self: flex-start;
     border: none;
-    background-color: #F3F5F4;
+    background-color: var(--section-bg-color);
   }
 
   &__input-wrapper {
@@ -218,10 +179,14 @@ $border-color: #E1E3E4;
   margin: 0;
   padding: 0;
   gap: 16px;
+
+  &__link fa-icon {
+    color: var(--active-text-color);
+  }
 }
 
 .copyright {
-  background-color: $main-text-color;
+  background-color: var(--main-text-color);
   width: 100%;
   padding: 24px 0;
 
@@ -234,13 +199,13 @@ $border-color: #E1E3E4;
     font-size: 14px;
     line-height: 18px;
     font-weight: 600;
-    color: $white-color;
+    color: var(--active-text-color);
   }
 
   &__policy {
     font-size: 14px;
     line-height: 18px;
     font-weight: 600;
-    color: $white-color;
+    color: var(--active-text-color);
   }
 }

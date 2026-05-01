@@ -2,6 +2,60 @@
 @use './_normalize';
 @use './_fonts';
 
+:root {
+  --main-text-color: #18121E;
+  --accent-text-color: #FDFDFD;
+  --black-color: #000000;
+  --btn-main-color: #1A3E3E;
+  --btn-accent-color: #FDFDFD;
+  --section-title-text-color: #F2BE22;
+  --section-bg-color: #F3F5F4;
+  --article-bg-color: #FDFDFD;
+  --footer-bg-color: #1A3E3E;
+  --border-color: #E1E3E4;
+  --disabled-bg-color: #696969;
+  --disabled-text-color: #808080;
+  --geo-color: #E2E8F0;
+  --active-text-color: #FFFFFF;
+  --form-bg-color: #FDFDFD;
+  --message-border-color: #FFFFFF;
+  --message-text-color: #E8E9EB;
+  --btn-delete-color: #FF0000;
+  --user-create-bg: #F9F9F9;
+  --user-create-input: #CCCCCC;
+  --user-create-bg: #EFEFEF;
+  --user-create-title: #555555;
+
+  --fw-400: 400;
+  --fw-700: 700;
+  --fw-800: 800; 
+}
+
+.my-app-dark {
+  --main-text-color: #FDFDFD; 
+  --accent-text-color: #18121E; 
+  --black-color: #FFFFFF;
+  --btn-main-color: #FDFDFD;
+  --btn-accent-color: #1A3E3E;
+  --section-title-text-color: #0000FF;
+  --section-bg-color: #18121E;
+  --article-bg-color: #18121E;
+  --footer-bg-color: #FFD700;
+  --border-color: #18121E;
+  --disabled-bg-color: #C30010;
+  --disabled-text-color: #C30010;
+  --geo-color: #18121E;
+  --active-text-color: #18121E;
+  --form-bg-color: #18121E;
+  --message-border-color: #18121E;
+  --message-text-color: #18121E;
+  --btn-delete-color: #0000FF;
+  --user-create-bg: #18121E;
+  --user-create-input: #18121E;
+  --user-create-bg: #18121E;
+  --user-create-title: #18121E;
+}
+
 * {
   font-family: 'Nunito-Sans';
 }
@@ -26,4 +80,26 @@ body {
   padding-top: 180px;
 }
 
+.btn {
+  padding: 16px 36px;
+  color: var(--accent-text-color);
+  border-radius: 4px;
+  font-weight: var(--fw-700);
+  line-height: 20px;
+  margin: 0;
+  border: none;
+  background-color: var(--btn-main-color);
+  cursor: pointer;
+  align-self: flex-start;
 
+  &:disabled {
+    background-color: var(--disabled-bg-color);
+    color: var(--disabled-text-color);
+    cursor: not-allowed;
+  }
+
+  &:hover {
+    background-color: var(--black-color);
+    color: var(--active-text-color);
+  }
+}

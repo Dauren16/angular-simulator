@@ -4,7 +4,7 @@
   gap: 12px;
   max-width: 480px;
   padding: 24px;
-  background: #f9f9f9;
+  background: var(--user-create-bg);
   border-radius: 12px;
   justify-self: center;
 
@@ -16,7 +16,7 @@
 
   &__input {
     padding: 8px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--user-create-input);
     border-radius: 8px;
     font-size: 14px;
     outline: none;
@@ -31,14 +31,14 @@
     flex-direction: column;
     gap: 8px;
     padding: 12px;
-    background: #efefef;
+    background: var(--user-create-bg);
     border-radius: 8px;
   }
 
   &__section-title {
     font-weight: 600;
     font-size: 13px;
-    color: #555;
+    color: var(--user-create-title);
   }
 
   &__geo {

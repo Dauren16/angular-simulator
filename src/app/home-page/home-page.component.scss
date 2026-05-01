@@ -1,47 +1,8 @@
-$main-text-color: #18121E;
-$accent-text-color: #FDFDFD;
-$black-color: #000000;
-$white-color: #FFFFFF;
-$btn-main-color: #1A3E3E;
-$btn-accent-color: #FDFDFD;
-$section-title-text-color: #F2BE22;
-$section-bg-color: #F3F5F4;
-$article-bg-color: #FDFDFD;
-$footer-bg-color: #1A3E3E;
-$fw-400: 400;
-$fw-700: 700;
-$fw-800: 800;
-$border-color: #E1E3E4;
-
-.btn {
-  padding: 16px 36px;
-  color: $accent-text-color;
-  border-radius: 4px;
-  font-weight: $fw-700;
-  line-height: 20px;
-  margin: 0;
-  border: none;
-  background-color: $btn-main-color;
-  cursor: pointer;
-  align-self: flex-start;
-
-  &:disabled {
-    background-color: gray;
-    color: #696969;
-    cursor: not-allowed;
-  }
-
-  &:hover {
-    background-color: $black-color;
-    color: $white-color;
-  }
-}
-
 .section-title {
   font-size: 24px;
-  color: $section-title-text-color;
+  color: var(--section-title-text-color);
   line-height: 20px;
-  font-weight: $fw-400;
+  font-weight: var(--fw-400);
   margin-bottom: 8px;
 }
 
@@ -49,14 +10,14 @@ $border-color: #E1E3E4;
   font-size: 32px;
   font-weight: 800;
   line-height: 120%;
-  color: $main-text-color;
+  color: var(--main-text-color);
   margin: 0;
 }
 
 .section-descr {
   display: block;
   font-size: 18px;
-  font-weight: $fw-400;
+  font-weight: var(--fw-400);
   line-height: 150%;
   margin: 0;
 }
@@ -73,12 +34,12 @@ $border-color: #E1E3E4;
   &__title {
     margin: 0 0 41px 0;
     padding: 0;
-    font-weight: $fw-400;
+    font-weight: var(--fw-400);
     font-size: 50px;
     line-height: 150%;
     text-transform: uppercase;
     letter-spacing: 2%;
-    color: $btn-accent-color;
+    color: var(--btn-accent-color);
   }
 }
 
@@ -111,9 +72,9 @@ $border-color: #E1E3E4;
     width: 270px;
     padding: 14px 44px 14px 16px;
     border-radius: 8px;
-    border: 1px solid $border-color;
+    border: 1px solid var(--border-color);
     background-color: transparent;
-    color: $accent-text-color;
+    color: var(--accent-text-color);
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -126,8 +87,8 @@ $border-color: #E1E3E4;
   &__label {
     font-size: 14px;
     line-height: 150%;
-    color: $accent-text-color;
-    font-weight: $fw-400;
+    color: var(--accent-text-color);
+    font-weight: var(--fw-400);
   }
 
   &__button-image {
@@ -178,7 +139,7 @@ $border-color: #E1E3E4;
 }
 
 .offer {
-  background-color: $section-bg-color;
+  background-color: var(--section-bg-color);
   padding: 80px 0 100px 0;
 
   &__blocks {
@@ -212,19 +173,20 @@ $border-color: #E1E3E4;
     display: flex;
     justify-content: center;
     gap: 16px;
+    align-items: center;
   }
 
   &__item-title {
     font-size: 18px;
     line-height: 20px;
-    font-weight: $fw-700;
+    font-weight: var(--fw-700);
   }
 
   &__item-descr {
     font-size: 14px;
     line-height: 20px;
-    font-weight: $fw-400;
-    color: $black-color;
+    font-weight: var(--fw-400);
+    color: var(--black-color);
     margin: 0;
   }
 
@@ -332,24 +294,24 @@ $border-color: #E1E3E4;
 
   &__title {
     font-size: 24px;
-    color: $accent-text-color;
+    color: var(--accent-text-color);
     line-height: 120%;
-    font-weight: $fw-700;
+    font-weight: var(--fw-700);
     margin: 0;
   }
 
   &__descr {
     font-size: 14px;
     line-height: 18px;
-    font-weight: $fw-400;
-    color: $accent-text-color;
+    font-weight: var(--fw-400);
+    color: var(--accent-text-color);
   }
 
   &__price {
     font-size: 20px;
     line-height: 24px;
-    font-weight: $fw-700;
-    color: $accent-text-color;
+    font-weight: var(--fw-700);
+    color: var(--accent-text-color);
     background: rgba(255, 255, 255, 0.3);
     padding: 8px 16px;
     border-radius: 4px;
@@ -358,7 +320,7 @@ $border-color: #E1E3E4;
 
 .travel {
   padding: 85px 0 95px 0;
-  background-color: $section-bg-color;
+  background-color: var(--section-bg-color);
 
   &__wrapper {
     display: flex;
@@ -391,7 +353,7 @@ $border-color: #E1E3E4;
   padding: 16px;
   gap: 24px;
   border-radius: 10px;
-  background-color: $article-bg-color;
+  background-color: var(--article-bg-color);
 
   &__content {
     display: flex;
@@ -404,21 +366,21 @@ $border-color: #E1E3E4;
   &__title {
     font-size: 24px;
     line-height: 32px;
-    font-weight: $fw-700;
-    color: $main-text-color;
+    font-weight: var(--fw-700);
+    color: var(--main-text-color);
     margin: 0;
 
     &:hover {
       text-decoration: underline;
-      color: $btn-main-color;
+      color: var(--btn-main-color);
     }
   }
 
   &__description {
     font-size: 14px;
     line-height: 20px;
-    font-weight: $fw-400;
-    color: $main-text-color;
+    font-weight: var(--fw-400);
+    color: var(--main-text-color);
     margin: 0;
   }
 
@@ -432,16 +394,16 @@ $border-color: #E1E3E4;
   &__date {
     font-size: 14px;
     line-height: 20px;
-    font-weight: $fw-700;
-    color: $section-title-text-color;
+    font-weight: var(--fw-700);
+    color: var(--section-title-text-color);
   }
 
   &__link {
     font-size: 14px;
     line-height: 20px;
-    color: $btn-main-color;
+    color: var(--btn-main-color);
     text-decoration: none;
-    font-weight: $fw-700;
+    font-weight: var(--fw-700);
   }
 }
 
