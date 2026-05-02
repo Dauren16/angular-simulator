@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { ButtonModule } from 'primeng/button';
-import { ToggleThemeService } from '../services/toggle-theme.service';
+import { ThemeService } from '../services/theme.service';
 import { SelectButtonModule } from 'primeng/selectbutton';
-import { ThemeName } from '../../enums/Theme';
+import { Theme } from '../../enums/Theme';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
+import { IThemeOption } from '../interfaces/IThemeState';
 
 
 @Component({
@@ -20,7 +21,7 @@ import { Observable } from 'rxjs';
 })
 export class HeaderComponent {
 
-  toggleThemeService: ToggleThemeService = inject(ToggleThemeService);
+  themeService: ThemeService = inject(ThemeService);
 
   companyName: string = 'румтибет';
   showDate: boolean = false;
@@ -28,12 +29,13 @@ export class HeaderComponent {
   currentWidget: 'counter' | 'showDate' = 'counter';
   currentDateTime!: string;
 
-  themeOptions: { name: string; value: ThemeName; }[] = [
-    { name: 'Aura', value: ThemeName.AURA },
-    { name: 'Lara', value: ThemeName.LARA },
-    { name: 'Nora', value: ThemeName.NORA }
+  themeOptions: IThemeOption[] = [
+    { name: 'Aura', value: Theme.AURA },
+    { name: 'Lara', value: Theme.LARA },
+    { name: 'Nora', value: Theme.NORA }
   ];
-  selectedTheme$: Observable<ThemeName> = this.toggleThemeService.themeName$;
+
+  selectedTheme$: Observable<Theme> = this.themeService.themeName$;
 
   navigation: INavigation[] = [
     {
@@ -70,8 +72,8 @@ export class HeaderComponent {
     this.currentWidget = widget;
   }
 
-  onThemeChange(theme: ThemeName): void {
-    this.toggleThemeService.setTheme(theme);
+  onThemeChange(theme: Theme): void {
+    this.themeService.setTheme(theme);
   }
 
 }
