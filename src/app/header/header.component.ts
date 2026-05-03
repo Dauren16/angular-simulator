@@ -3,15 +3,12 @@ import { INavigation } from '../interfaces/INavigation';
 import { RouterLink, RouterLinkActive } from "@angular/router";
 import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { ToggleSwitchModule } from 'primeng/toggleswitch';
+import { ToggleSwitchChangeEvent, ToggleSwitchModule } from 'primeng/toggleswitch';
 import { ButtonModule } from 'primeng/button';
 import { ThemeService } from '../services/theme.service';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { Theme } from '../../enums/Theme';
 import { AsyncPipe } from '@angular/common';
-import { Observable } from 'rxjs';
-import { IThemeOption } from '../interfaces/IThemeState';
-
 
 @Component({
   selector: 'app-header',
@@ -28,14 +25,6 @@ export class HeaderComponent {
   counter: number = 0;
   currentWidget: 'counter' | 'showDate' = 'counter';
   currentDateTime!: string;
-
-  themeOptions: IThemeOption[] = [
-    { name: 'Aura', value: Theme.AURA },
-    { name: 'Lara', value: Theme.LARA },
-    { name: 'Nora', value: Theme.NORA }
-  ];
-
-  selectedTheme$: Observable<Theme> = this.themeService.themeName$;
 
   navigation: INavigation[] = [
     {
@@ -74,6 +63,10 @@ export class HeaderComponent {
 
   onThemeChange(theme: Theme): void {
     this.themeService.setTheme(theme);
+  }
+
+  toggleDarkMode(event: ToggleSwitchChangeEvent): void {
+    this.themeService.switchDarkToLight(event.checked)
   }
 
 }

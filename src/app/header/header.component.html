@@ -26,17 +26,17 @@
       <div class="card flex justify-center">
         <p-selectbutton
           id="change-theme"
-          [options]="themeOptions"
-          inputId="themeOptions"
-          [ngModel]="selectedTheme$ | async"
+          [options]="themeService.themeOptions"
+          [ngModel]="themeService.themeName$ | async"
           (onChange)="onThemeChange($event.value)" 
-          optionLabel="name" optionValue="value"
+          optionLabel="name"
+          optionValue="value"
         />
       </div>
-      <p-toggleswitch 
+      <p-toggleswitch
         id="change-theme-mode"
         [ngModel]="themeService.isDarkMode$ | async" 
-        (onChange)="themeService.toggleTheme()">
+        (onChange)="toggleDarkMode($event)">
       </p-toggleswitch>
       @if (currentWidget === 'counter') {
         <div class="counter">
