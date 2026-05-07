@@ -9,12 +9,6 @@ import Nora from '@primeuix/themes/nora';
 import { IThemeOption } from '../interfaces/IThemeState';
 import { Preset } from '@primeuix/themes/types';
 
-const PRESETS: Record<Theme, Preset> = {
-  [Theme.AURA]: Aura,
-  [Theme.LARA]: Lara,
-  [Theme.NORA]: Nora
-};
-
 @Injectable({
   providedIn: 'root',
 })
@@ -22,13 +16,13 @@ export class ThemeService {
 
   private localStorageService: LocalStorageService = inject(LocalStorageService);
 
-  private themeModeSubject: BehaviorSubject<ThemeMode> = new BehaviorSubject(this.getDefaultDarkMode());
-  themeMode$: Observable<ThemeMode> = this.themeModeSubject.asObservable();
+  private isDarkModeSubject: BehaviorSubject<ThemeMode> = new BehaviorSubject(this.getInitialDarkMode());
+  isDarkMode$: Observable<ThemeMode> = this.isDarkModeSubject.asObservable();
 
-  private themeNameSubject: BehaviorSubject<Theme> = new BehaviorSubject(this.getDefaultTheme());
-  themeName$: Observable<Theme> = this.themeNameSubject.asObservable();
+  private themeSubject: BehaviorSubject<Theme> = new BehaviorSubject(this.getInitialTheme());
+  theme$: Observable<Theme> = this.themeSubject.asObservable();
 
-  isDarkMode$: Observable<boolean> = this.themeModeSubject.pipe(
+  isDark$: Observable<boolean> = this.isDarkModeSubject.pipe(
     map((theme: ThemeMode) => theme === ThemeMode.DARK)
   )
 
@@ -38,16 +32,22 @@ export class ThemeService {
     { name: 'Nora', value: Theme.NORA }
   ];
 
+  presets: Record<Theme, Preset> = {
+    [Theme.AURA]: Aura,
+    [Theme.LARA]: Lara,
+    [Theme.NORA]: Nora
+  };
+
   constructor() {
-    this.themeNameSubject.pipe(
+    this.themeSubject.pipe(
       tap((theme: Theme) => {
-          usePreset(PRESETS[theme]);
+          usePreset(this.presets[theme]);
           this.localStorageService.setItem('theme-name', theme);
         }
       )
     ).subscribe();
 
-    this.themeModeSubject.pipe(
+    this.isDarkModeSubject.pipe(
       tap((mode: ThemeMode) => {
         document.documentElement.classList.toggle('my-app-dark', mode === ThemeMode.DARK);
         this.localStorageService.setItem('theme', mode);
@@ -56,20 +56,20 @@ export class ThemeService {
     ).subscribe();
   }
 
-  getDefaultDarkMode(): ThemeMode {
+  getInitialDarkMode(): ThemeMode {
     return this.localStorageService.getItem<ThemeMode>('theme') ?? ThemeMode.DARK;
   }
 
-  getDefaultTheme(): Theme {
+  getInitialTheme(): Theme {
     return this.localStorageService.getItem<Theme>('theme-name') ?? Theme.AURA;
   }
 
-  switchDarkToLight(isDark: boolean): void {
-    this.themeModeSubject.next(isDark ? ThemeMode.DARK : ThemeMode.LIGHT);
+  toggleDarkMode(isDark: boolean): void {
+    this.isDarkModeSubject.next(isDark ? ThemeMode.DARK : ThemeMode.LIGHT);
   }
 
   setTheme(theme: Theme): void {
-    this.themeNameSubject.next(theme);
+    this.themeSubject.next(theme);
   }
   
 }

@@ -66,7 +66,7 @@ export class HeaderComponent {
   }
 
   toggleDarkMode(event: ToggleSwitchChangeEvent): void {
-    this.themeService.switchDarkToLight(event.checked)
+    this.themeService.toggleDarkMode(event.checked);
   }
 
 }

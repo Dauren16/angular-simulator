@@ -27,7 +27,7 @@
         <p-selectbutton
           id="change-theme"
           [options]="themeService.themeOptions"
-          [ngModel]="themeService.themeName$ | async"
+          [ngModel]="themeService.theme$ | async"
           (onChange)="onThemeChange($event.value)" 
           optionLabel="name"
           optionValue="value"
@@ -35,7 +35,7 @@
       </div>
       <p-toggleswitch
         id="change-theme-mode"
-        [ngModel]="themeService.isDarkMode$ | async" 
+        [ngModel]="themeService.isDark$ | async" 
         (onChange)="toggleDarkMode($event)">
       </p-toggleswitch>
       @if (currentWidget === 'counter') {
