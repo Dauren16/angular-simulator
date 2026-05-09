@@ -15,7 +15,7 @@ const PRESETS: Record<Theme, Preset> = {
 };
 
 const initThemePreset = (): Preset => {
-  const themeFromStorage = localStorage.getItem('theme-name');
+  const themeFromStorage: string | null = localStorage.getItem('theme-name');
   const savedTheme: Theme = themeFromStorage ? JSON.parse(themeFromStorage) : Theme.AURA;
   return PRESETS[savedTheme] ?? Aura;
 };
