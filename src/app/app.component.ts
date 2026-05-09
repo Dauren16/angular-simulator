@@ -11,7 +11,6 @@ import { LoaderComponent } from "./loader/loader.component";
 import { AsyncPipe } from '@angular/common';
 import { LoaderService } from './services/loader.service';
 
-
 @Component({
   selector: 'app-root',
   imports: [FormsModule, NgTemplateOutlet, HeaderComponent, FooterComponent, RouterOutlet, MessageComponent, LoaderComponent, AsyncPipe],

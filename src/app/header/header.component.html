@@ -23,6 +23,21 @@
       <button class="header__btn btn">Консультация</button>
     </div>
     <div class="header__secondary-wrapper">
+      <div class="card flex justify-center">
+        <p-selectbutton
+          id="change-theme"
+          [options]="themeService.themeOptions"
+          [ngModel]="themeService.theme$ | async"
+          (onChange)="onThemeChange($event.value)" 
+          optionLabel="name"
+          optionValue="value"
+        />
+      </div>
+      <p-toggleswitch
+        id="change-theme-mode"
+        [ngModel]="themeService.isDark$ | async" 
+        (onChange)="toggleDarkMode($event)">
+      </p-toggleswitch>
       @if (currentWidget === 'counter') {
         <div class="counter">
           <button (click)="increaseCounter()" class="counter__plus">+</button>

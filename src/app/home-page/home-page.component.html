@@ -63,11 +63,7 @@
         <ul class="offer__list">
           @for (offer of offers; track offer.id) {
             <li class="offer__item">
-              <img class="offer__image"
-              [src]="'/images/' + 'icons/' + offer.image + '.png'"
-              alt="#"
-              width="50"
-              height="50">
+              <fa-icon [icon]="offer.image" size="2x"></fa-icon>
               <div class="offer__item-wrapper">
                 <span class="offer__item-title">{{ offer.title }}</span>
                 <p class="offer__item-descr">{{ offer.description }}</p>
