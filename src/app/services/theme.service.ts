@@ -24,7 +24,7 @@ export class ThemeService {
 
   isDark$: Observable<boolean> = this.isDarkModeSubject.pipe(
     map((theme: ThemeMode) => theme === ThemeMode.DARK)
-  )
+  );
 
   themeOptions: IThemeOption[] = [
     { name: 'Aura', value: Theme.AURA },
