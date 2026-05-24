@@ -1,14 +1,19 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IUser } from '../../interfaces/IUser';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, UpperCasePipe } from '@angular/common';
+import { PhoneFormatPipe } from "../../pipes/phone-format.pipe";
+import { PhoneFormat } from '../../../enums/Format';
+import { BoldTextDirective } from '../../directives/bold-text.directive';
 
 @Component({
   selector: 'app-user-card',
-  imports: [],
+  imports: [UpperCasePipe, PhoneFormatPipe, BoldTextDirective],
   templateUrl: './user-card.component.html',
   styleUrl: './user-card.component.scss',
 })
 export class UserCardComponent {
+
+  PhoneFormat: typeof PhoneFormat = PhoneFormat;
 
   @Input({ required: true }) user!: IUser;
   @Output() deleteUser: EventEmitter<number> = new EventEmitter<number>();

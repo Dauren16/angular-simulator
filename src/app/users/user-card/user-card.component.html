@@ -1,6 +1,6 @@
 <div class="user-card">
   <div class="user-card__heading-block">
-    <span class="user-card__name">{{ user.name }}</span>
+    <span class="user-card__name">{{ user.name | uppercase }}</span>
     <span class="users-card__username colored-value">@{{ user.username }}</span>
   </div>
   <div class="user-card__wrapper">
@@ -16,7 +16,7 @@
       </div>
       <div class="user-card__values-block">
         <span class="user-card__value colored-value">{{ user.email }}</span>
-        <span class="user-card__value">{{ user.phone }}</span>
+        <span class="user-card__value">{{ user.phone | phoneFormat: PhoneFormat.INTERNATIONAL }}</span>
         <span class="user-card__value colored-value">{{ user.website || 'Неизвестно' }}</span>
       </div>
     </div>
@@ -64,5 +64,5 @@
       </div>
     </div>
   </div>
-  <button id="user-card__delete-btn" class="user-card__delete-btn" (click)="onDelete()">Удалить пользователя</button>
+  <button id="user-card__delete-btn" class="user-card__delete-btn" (click)="onDelete()" appBoldText>Удалить пользователя</button>
 </div>
