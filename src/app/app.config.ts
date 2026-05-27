@@ -19,12 +19,14 @@ const initThemePreset = (): Preset => {
   const savedTheme: Theme = themeFromStorage ? JSON.parse(themeFromStorage) : Theme.AURA;
   return PRESETS[savedTheme] ?? Aura;
 };
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideZoneChangeDetection(),
+    provideHttpClient(),
     providePrimeNG({
       theme: {
         preset: initThemePreset(),
