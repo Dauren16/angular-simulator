@@ -1,6 +1,7 @@
 <div class="container-users">
   <app-user-create (createUser)="onCreateUser($event)" />
   <app-users-filter (filterChange)="onFilterChange($event)"/>
+  <h3>{{ (filteredUsers$ | async)?.length ?? 0 | plural:'пользователь':'пользователя':'пользователей' }}</h3>
   <ul class="users-list">
     @for(user of filteredUsers$ | async; track user.id) {
       <li class="users-list__item">

@@ -13,7 +13,7 @@ import { BoldTextDirective } from '../../directives/bold-text.directive';
 })
 export class UserCardComponent {
 
-  PhoneFormat: typeof PhoneFormat = PhoneFormat;
+  phoneFormat: typeof PhoneFormat = PhoneFormat;
 
   @Input({ required: true }) user!: IUser;
   @Output() deleteUser: EventEmitter<number> = new EventEmitter<number>();
