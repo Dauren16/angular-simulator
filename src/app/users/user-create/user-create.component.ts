@@ -2,7 +2,7 @@ import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IUser } from '../../interfaces/IUser';
 import { GradientBorderDirective } from "../../directives/gradient-border.directive";
-import { GradientConfiguration } from '../../interfaces/GradientConfiguration';
+import { IGradientConfiguration } from '../../interfaces/IGradientConfiguration';
 
 @Component({
   selector: 'app-user-create',
@@ -38,7 +38,7 @@ export class UserCreateComponent {
     })
   });
 
-  gradientConfig: GradientConfiguration = {
+  gradientConfig: IGradientConfiguration = {
     delay: 400,
     colors: ['#d4a373', '#1a3e3e'],
     thickness: 3

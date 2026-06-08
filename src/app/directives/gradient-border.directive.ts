@@ -1,20 +1,20 @@
 import { Directive, ElementRef, HostListener, inject, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
-import { GradientConfiguration } from '../interfaces/GradientConfiguration';
+import { IGradientConfiguration } from '../interfaces/IGradientConfiguration';
 
 @Directive({
   selector: '[appGradientBorder]',
 })
 export class GradientBorderDirective implements OnInit, OnDestroy {
 
-  @Input() gradientConfiguration: GradientConfiguration = {}
+  @Input() gradientConfiguration: IGradientConfiguration = {}
 
-  private defaultConfig: GradientConfiguration = {
+  private defaultConfig: IGradientConfiguration = {
     delay: 1000,
     colors: ['pink', 'purple'],
     thickness: 2
   };
 
-  private config!: GradientConfiguration; 
+  private config!: IGradientConfiguration; 
   private timer!: number;
   private el: ElementRef = inject(ElementRef);
   private render: Renderer2 = inject(Renderer2);
@@ -30,7 +30,8 @@ export class GradientBorderDirective implements OnInit, OnDestroy {
       this.render.setStyle(this.el.nativeElement, 'border', `${this.config.thickness}px solid`);
       const colors = this.config.colors!.join(', ');
       this.render.setStyle(this.el.nativeElement, 'border-image', `linear-gradient(${colors}) 1`);
-    }, this.config.delay);
+    },
+    this.config.delay);
   }
 
   @HostListener('mouseleave')
