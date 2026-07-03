@@ -7,6 +7,9 @@ import Lara from '@primeuix/themes/lara';
 import Nora from '@primeuix/themes/nora';
 import { Preset } from '@primeuix/themes/types';
 import { Theme } from '../enums/Theme';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { loggingInterceptor } from './interceptors/logging.interceptor';
+import { errorInterceptor } from './interceptors/error.interceptor';
 
 const PRESETS: Record<Theme, Preset> = {
   [Theme.AURA]: Aura,
@@ -19,14 +22,15 @@ const initThemePreset = (): Preset => {
   const savedTheme: Theme = themeFromStorage ? JSON.parse(themeFromStorage) : Theme.AURA;
   return PRESETS[savedTheme] ?? Aura;
 };
-import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideZoneChangeDetection(),
-    provideHttpClient(),
+    provideHttpClient(
+      withInterceptors([loggingInterceptor, errorInterceptor])
+    ),
     providePrimeNG({
       theme: {
         preset: initThemePreset(),
