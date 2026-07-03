@@ -1,26 +1,26 @@
 <form class="user-create" [formGroup]="form" (ngSubmit)="onSubmit()">
   <h2 class="user-create__title">Создать пользователя</h2>
-  <input class="user-create__input" id="name" formControlName="name" type="text" placeholder="Имя" />
-  <input class="user-create__input" id="username" formControlName="username" type="text" placeholder="Никнейм" />
-  <input class="user-create__input" id="email" formControlName="email" type="email" placeholder="Email" />
-  <input class="user-create__input" id="phone" formControlName="phone" type="text" placeholder="Телефон" />
-  <input class="user-create__input" id="website" formControlName="website" type="text" placeholder="Веб-сайт" />
+  <input class="user-create__input" id="name" formControlName="name" type="text" placeholder="Имя"  appGradientBorder [gradientConfiguration]="gradientConfig" />
+  <input class="user-create__input" id="username" formControlName="username" type="text" placeholder="Никнейм" appGradientBorder [gradientConfiguration]="gradientConfig" />
+  <input class="user-create__input" id="email" formControlName="email" type="email" placeholder="Email" appGradientBorder [gradientConfiguration]="gradientConfig" />
+  <input class="user-create__input" id="phone" formControlName="phone" type="text" placeholder="Телефон" appGradientBorder [gradientConfiguration]="gradientConfig" />
+  <input class="user-create__input" id="website" formControlName="website" type="text" placeholder="Веб-сайт" appGradientBorder [gradientConfiguration]="gradientConfig" />
   <span class="user-create__section-title">Адрес</span>
   <div class="user-create__section" formGroupName="address">
-    <input class="user-create__input" id="address-city" formControlName="city" type="text" placeholder="Город" />
-    <input class="user-create__input" id="address-street" formControlName="street" type="text" placeholder="Улица" />
-    <input class="user-create__input" id="address-suite" formControlName="suite" type="text" placeholder="Офис" />
-    <input class="user-create__input" id="address-zipcode" formControlName="zipcode" type="text" placeholder="Индекс" />
+    <input class="user-create__input" id="address-city" formControlName="city" type="text" placeholder="Город" appGradientBorder [gradientConfiguration]="gradientConfig" />
+    <input class="user-create__input" id="address-street" formControlName="street" type="text" placeholder="Улица" appGradientBorder [gradientConfiguration]="gradientConfig" />
+    <input class="user-create__input" id="address-suite" formControlName="suite" type="text" placeholder="Офис" appGradientBorder [gradientConfiguration]="gradientConfig" />
+    <input class="user-create__input" id="address-zipcode" formControlName="zipcode" type="text" placeholder="Индекс" appGradientBorder [gradientConfiguration]="gradientConfig" />
     <div class="user-create__geo" formGroupName="geo">
-      <input class="user-create__input" id="geo-lat" formControlName="lat" type="number" placeholder="Широта" />
-      <input class="user-create__input" id="geo-lng" formControlName="lng" type="number" placeholder="Долгота" />
+      <input class="user-create__input" id="geo-lat" formControlName="lat" type="number" placeholder="Широта"  appGradientBorder [gradientConfiguration]="gradientConfig" />
+      <input class="user-create__input" id="geo-lng" formControlName="lng" type="number" placeholder="Долгота" appGradientBorder [gradientConfiguration]="gradientConfig" />
     </div>
   </div>
   <span class="user-create__section-title">Компания</span>
   <div class="user-create__section" formGroupName="company">
-    <input class="user-create__input" id="company-name" formControlName="name" type="text" placeholder="Название" />
-    <input class="user-create__input" id="company-catchphrase" formControlName="catchPhrase" type="text" placeholder="Миссия" />
-    <input class="user-create__input" id="company-bs" formControlName="bs" type="text" placeholder="Специализация" />
+    <input class="user-create__input" id="company-name" formControlName="name" type="text" placeholder="Название" appGradientBorder [gradientConfiguration]="gradientConfig" />
+    <input class="user-create__input" id="company-catchphrase" formControlName="catchPhrase" type="text" placeholder="Миссия" appGradientBorder [gradientConfiguration]="gradientConfig" />
+    <input class="user-create__input" id="company-bs" formControlName="bs" type="text" placeholder="Специализация" appGradientBorder [gradientConfiguration]="gradientConfig" />
   </div>
   <button class="user-create__btn" id="submit-btn" type="submit">Создать пользователя</button>
 </form>

@@ -1,10 +1,12 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IUser } from '../../interfaces/IUser';
+import { GradientBorderDirective } from "../../directives/gradient-border.directive";
+import { IGradientConfiguration } from '../../interfaces/IGradientConfiguration';
 
 @Component({
   selector: 'app-user-create',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, GradientBorderDirective],
   templateUrl: './user-create.component.html',
   styleUrl: './user-create.component.scss',
 })
@@ -35,6 +37,12 @@ export class UserCreateComponent {
       bs: ['', [Validators.maxLength(100)]]
     })
   });
+
+  gradientConfig: IGradientConfiguration = {
+    delay: 400,
+    colors: ['#d4a373', '#1a3e3e'],
+    thickness: 3
+  };
 
   onSubmit(): void {
     if(this.form.invalid) {

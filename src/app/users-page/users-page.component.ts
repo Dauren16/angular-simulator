@@ -7,10 +7,11 @@ import { AsyncPipe } from '@angular/common';
 import { UserCardComponent } from "../users/user-card/user-card.component";
 import { UserCreateComponent } from "../users/user-create/user-create.component";
 import { UsersFilterComponent } from "../users/users-filter/users-filter.component";
+import { PluralPipe } from "../pipes/plural.pipe";
 
 @Component({
   selector: 'app-users-page',
-  imports: [AsyncPipe, UserCardComponent, UserCreateComponent, UsersFilterComponent],
+  imports: [AsyncPipe, UserCardComponent, UserCreateComponent, UsersFilterComponent, PluralPipe],
   templateUrl: './users-page.component.html',
   styleUrl: './users-page.component.scss',
 })
