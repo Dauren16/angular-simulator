@@ -3,7 +3,7 @@ import { inject } from '@angular/core';
 import { Observable, catchError, throwError } from 'rxjs';
 import { MessageService } from '../services/message.service';
 
-export const errorInterceptor: HttpInterceptorFn = (request, next): Observable<HttpEvent<unknown>> => {
+export const errorInterceptor: HttpInterceptorFn = (request, next) => {
   const messageService: MessageService = inject(MessageService);
 
   return next(request).pipe(
